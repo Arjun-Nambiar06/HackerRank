@@ -1,5 +1,5 @@
 def is_palindrome(s, l, r):
-    while l < right:
+    while l < r:
         if s[l] != s[r]:
             return False
         l += 1
