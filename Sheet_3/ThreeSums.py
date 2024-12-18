@@ -1,6 +1,6 @@
 def threeSum(nums):
     zero,N,P = [],[],[]
-    final = []
+    final = set()
 
     for i in nums:
         if i < 0:
@@ -14,26 +14,25 @@ def threeSum(nums):
     if zero:
         for i in pos:
             if (-1)*i in neg:
-                if [(-1)*i,0,i] not in final:
-                    final.append([(-1)*i,0,i])
+                final.add(tuple([(-1)*i,0,i]))
         
     for i in range(len(N)):
         for j in range(i+1,len(N)):
             target = (-1)*(N[i]+N[j])
-            if target in pos and sorted([N[i],N[j],target]) not in final:
-                final.append(sorted([N[i],N[j],target]))
+            if target in pos:
+                final.add(tuple(sorted([N[i],N[j],target])))
 
     for i in range(len(P)):
         for j in range(i+1,len(P)):
             target = (-1)*(P[i]+P[j])
-            if target in neg and sorted([P[i],P[j],target]) not in final:
-                final.append(sorted([P[i],P[j],target]))
+            if target in neg:
+                final.add(tuple(sorted([P[i],P[j],target])))
 
         
-    if len(zero) >= 3 and [0,0,0] not in final:
-        final.append([0,0,0])
+    if len(zero) >= 3:
+        final.add(tuple([0,0,0]))
             
-    return final
+    return [list(x) for x in final]
 
     '''length = len(nums)
     output=[]
@@ -45,3 +44,9 @@ def threeSum(nums):
                     if trio not in output:
                         output.append(trio) 
     return output'''
+length = int(input("Enter length of list: "))
+nums = []
+for i in range(length):
+    a = int(input("Enter element: "))
+    nums.append(a)
+print(threeSum(nums))
