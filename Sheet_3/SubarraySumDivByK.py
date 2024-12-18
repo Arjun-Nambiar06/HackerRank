@@ -1,4 +1,5 @@
-def subarraysDivByK(self, nums: List[int], k: int) -> int:
+from collections import defaultdict
+def subarraysDivByK(nums,k):
     dct = defaultdict(int)
     dct[0] = 1
     sum,count = 0,0

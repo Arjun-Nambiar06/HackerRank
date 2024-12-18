@@ -1,3 +1,4 @@
+from collections import defaultdict
 def subarraySum(nums,k):
     dct = defaultdict(int)
     dct[0] = 1
